@@ -1,16 +1,11 @@
 @extends('layouts.app')
-@include('components.navbar')
-
 @section('content')
-    <h2>Edit Record</h2>
-    <form action="{{ route('records.update', $record->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <input type="text" name="title" value="{{ $record->title }}" required>
-        <input type="text" name="author" value="{{ $record->author }}" required>
-        <input type="number" name="publication_year" value="{{ $record->publication_year }}" required>
-        <input type="text" name="category" value="{{ $record->category }}" required>
-        <input type="text" name="isbn" value="{{ $record->isbn }}" required>
-        <button type="submit">Update</button>
-    </form>
+    <div class="container">
+        <h1>Edit Record</h1>
+        <form action="{{ route('records.update', $record) }}" method="POST">
+            @csrf @method('PUT')
+            <input type="text" name="name" value="{{ $record->name }}" required>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
 @endsection

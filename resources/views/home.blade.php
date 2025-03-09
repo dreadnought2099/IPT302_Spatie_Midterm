@@ -1,10 +1,8 @@
 @extends('layouts.app')
-@include('components.navbar')
-
-
 @section('content')
-    <h1>Welcome!</h1>
-    <p><strong>Name:</strong> Raymart Magallanes</p>
-    <p><strong>Address:</strong>Poblacion, Sagbayan, Bohol</p>
-    <p><strong>Course & Year:</strong>BSIT III</p>
+    <div class="container">
+        <h1>Raymart Magallanes</h1>
+        <p>Poblacion, Sagbayan, Bohol</p>
+        <p>BSIT III</p>
+    </div>
 @endsection
