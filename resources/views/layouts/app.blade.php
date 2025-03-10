@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
-    <title>IPT 302 Midterm Exam</title>
+    <title>IPT Midterm Exam</title>
 </head>
 
 <body class="overflow-hidden">

@@ -1,11 +1,11 @@
 <nav class="bg-primary flex justify-between items-center p-5 text-white">
     <div>
         <a href="{{ url('/') }}" class="text-3xl text-white font-bold hover-underline">
-            RMAGALLANEZ
+            IPT Midterm
         </a>
     </div>
 
-    <div class="flex gap-5">
+    <div class="flex gap-5 text-[18px] font-bold">
         <a href="{{ url('/') }}" class="hover-underline">Home</a>
         <a href="{{ route('records.index') }}" class="hover-underline">Records</a>
         <a href="{{ route('records.create') }}" class="hover-underline">Add Record</a>

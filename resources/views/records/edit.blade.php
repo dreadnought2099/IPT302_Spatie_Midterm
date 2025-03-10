@@ -1,4 +1,6 @@
 @extends('layouts.app')
+{{-- @section('title', 'Edit Record') --}}
+
 @section('content')
     <div class="container">
         <h1>Edit Record</h1>

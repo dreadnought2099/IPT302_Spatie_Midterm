@@ -23,11 +23,11 @@ class RecordController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'author' => 'required',
-            'publication_year' => 'required|digits:4|integer',
-            'category' => 'required',
-            'isbn' => 'required|unique:records',
+            'title' => 'required|string|max:200',
+            'author' => 'required|string|max:100',
+            'publication_year' => 'required|digits:4|integer|min:1000|max:' . date('Y'),
+            'category' => 'required|string|max:50',
+            'isbn' => 'required|unique:records,isbn',
         ]);
 
         Record::create($request->all());
@@ -45,10 +45,10 @@ class RecordController extends Controller
     public function update(Request $request, Record $record)
     {
         $request->validate([
-            'title' => 'required',
-            'author' => 'required',
-            'publication_year' => 'required|digits:4|integer',
-            'category' => 'required',
+            'title' => 'required|string|max:200',
+            'author' => 'required|string|max:100',
+            'publication_year' => 'required|digits:4|integer|min:1000|max:' . date('Y'),
+            'category' => 'required|string|max:50',
             'isbn' => 'required|unique:records,isbn,' . $record->id,
         ]);
 

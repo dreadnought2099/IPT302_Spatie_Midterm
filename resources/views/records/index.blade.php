@@ -1,33 +1,56 @@
 @extends('layouts.app')
+@section('title', 'List of records')
+
 @section('content')
-    <div class="container">
-        <h1>Records</h1>
-        <a href="{{ route('records.create') }}" class="btn btn-primary">Create Record</a>
-        <table class="table">
-            <thead>
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-4">Records</h1>
+        <a href="{{ route('records.create') }}"
+            class="bg-primary hover:bg-gray-100 hover:text-primary border-2 hover:border-primary text-white font-bold py-2 px-4 rounded mb-4 inline-block">
+            Create Record
+        </a>
+
+        <table class="min-w-full bg-white border border-gray-300">
+            <thead class="bg-gray-100">
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Actions</th>
+                    <th class="py-2 px-4 border border-gray-300 text-left w-10">ID</th>
+                    <th class="py-2 px-4 border border-gray-300 text-left">Title</th>
+                    <th class="py-2 px-4 border border-gray-300 text-left">Author</th>
+                    <th class="py-2 px-4 border border-gray-300 text-left w-32">Publication Year</th>
+                    <th class="py-2 px-4 border border-gray-300 text-left">Category</th>
+                    <th class="py-2 px-4 border border-gray-300 text-left w-40">ISBN</th>
+                    <th class="py-2 px-4 border border-gray-300 text-center w-40">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($records as $record)
-                    <tr>
-                        <td>{{ $record->id }}</td>
-                        <td>{{ $record->name }}</td>
-                        <td>
-                            @role('Administrator')
-                                <a href="{{ route('records.edit', $record) }}" class="btn btn-warning">Edit</a>
-                                <form action="{{ route('records.destroy', $record) }}" method="POST" style="display:inline;">
-                                    @csrf @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            @endrole
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-2 px-4 border border-gray-300">{{ $record->id }}</td>
+                        <td class="py-2 px-4 border border-gray-300">{{ $record->title }}</td>
+                        <td class="py-2 px-4 border border-gray-300">{{ $record->author }}</td>
+                        <td class="py-2 px-4 border border-gray-300 text-center">{{ $record->publication_year }}</td>
+                        <td class="py-2 px-4 border border-gray-300">{{ $record->category }}</td>
+                        <td class="py-2 px-4 border border-gray-300">{{ $record->isbn }}</td>
+                        <td class="py-2 px-4 border border-gray-300 text-center">
+                            @if(auth()->check() && auth()->user()->hasRole('Administrator'))
+                                <div class="flex justify-center space-x-2">
+                                    <a href="{{ route('records.edit', $record) }}" 
+                                       class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded transition duration-300 cursor-pointer">
+                                        Edit
+                                    </a>
+                                    <form action="{{ route('records.destroy', $record) }}" method="POST" class="inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" 
+                                                class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded transition duration-300 cursor-pointer">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </div>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
             </tbody>
-        </table>
+        </table>        
     </div>
 @endsection

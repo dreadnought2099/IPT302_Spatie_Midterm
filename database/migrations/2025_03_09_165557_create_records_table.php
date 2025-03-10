@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('author');
+            $table->string('title', 200);
+            $table->string('author', 100);
             $table->year('publication_year');
-            $table->string('category');
+            $table->string('category', 50);
             $table->string('isbn')->unique();
             $table->timestamps();
         });

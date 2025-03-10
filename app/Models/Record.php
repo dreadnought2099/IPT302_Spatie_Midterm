@@ -9,5 +9,6 @@ class Record extends Model
 {
     use HasFactory;
 
+    protected $table = 'records';
     protected $fillable = ['title', 'author', 'publication_year', 'category', 'isbn'];
 }
