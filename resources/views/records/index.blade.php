@@ -6,7 +6,7 @@
         <h1 class="text-2xl font-bold mb-4">Records</h1>
         <a href="{{ route('records.create') }}"
             class="bg-primary hover:bg-gray-100 hover:text-primary border-2 hover:border-primary text-white font-bold py-2 px-4 rounded mb-4 inline-block">
-            Create Record
+            Add Record
         </a>
 
         <table class="min-w-full bg-white border border-gray-300">

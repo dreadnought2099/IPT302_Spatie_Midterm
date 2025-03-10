@@ -25,7 +25,7 @@ class RecordController extends Controller
         $request->validate([
             'title' => 'required|string|max:200',
             'author' => 'required|string|max:100',
-            'publication_year' => 'required|digits:4|integer|min:1000|max:' . date('Y'),
+            'publication_year' => 'required|integer|min:1000|max:' . date('Y'),
             'category' => 'required|string|max:50',
             'isbn' => 'required|unique:records,isbn',
         ]);
@@ -47,7 +47,7 @@ class RecordController extends Controller
         $request->validate([
             'title' => 'required|string|max:200',
             'author' => 'required|string|max:100',
-            'publication_year' => 'required|digits:4|integer|min:1000|max:' . date('Y'),
+            'publication_year' => 'required|integer|min:1000|max:' . date('Y'),
             'category' => 'required|string|max:50',
             'isbn' => 'required|unique:records,isbn,' . $record->id,
         ]);
