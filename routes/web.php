@@ -20,7 +20,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/records/add', [RecordController::class, 'create'])->name('records.create');
     Route::post('/records', [RecordController::class, 'store'])->name('records.store');
     
-    Route::middleware(['auth', 'role:Administrator'])->group(function () {
+    Route::middleware(['role:Administrator'])->group(function () {
         Route::get('/records/{record}/edit', [RecordController::class, 'edit'])->name('records.edit');
         Route::put('/records/{record}', [RecordController::class, 'update'])->name('records.update');
         Route::delete('/records/{record}', [RecordController::class, 'destroy'])->name('records.destroy');

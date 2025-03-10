@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'List of records')
+{{-- @section('title', 'List of records') --}}
 
 @section('content')
     <div class="container mx-auto px-4 py-8">
