@@ -1,13 +1,76 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+@source "../views";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source "../**/*.blade.php";
 @source "../**/*.js";
 @source "../**/*.vue";
-@source "../views";
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+}
+
+@layer base {
+    :root {
+        --color-primary: #a31621;
+        --color-dark: #212121;
+        /* -color-hover: #9f444c; */
+    }
+}
+
+@layer utilities {
+    .bg-primary {
+        background-color: var(--color-primary);
+    }
+
+    .hover\.bg-primary:hover {
+        background-color: var(--color-primary);
+    }
+
+    .hover\:border-primary:hover {
+        border-color: var(--color-primary);
+    }
+
+    .hover\:text-primary:hover {
+        color: var(--color-primary);
+    }
+
+    .text-primary {
+        color: var(--color-primary);
+    }
+
+    .border-primary {
+        border-color: var(--color-primary);
+    }
+
+    .focus\:ring-primary:focus {
+        --tw-ring-color: var(--color-primary); /* Set ring color */
+        box-shadow: 0 0 0 1px var(--tw-ring-color); /* Add ring effect */
+    }
+
+    .focus\:border-primary:focus {
+        border-color: var(--color-primary);
+    }
+
+    .peer:focus ~ label {
+        color: var(--color-primary);
+    }
+}
+
+@layer components {
+    .hover-underline {
+        @apply relative inline-block;
+    }
+
+    .hover-underline::after {
+        content: "";
+        @apply absolute left-1/2 bottom-0 w-0 h-0.5 bg-white transition-all duration-500 ease-in-out;
+    }
+
+    .hover-underline:hover::after {
+        @apply left-0 w-full;
+    }
 }
