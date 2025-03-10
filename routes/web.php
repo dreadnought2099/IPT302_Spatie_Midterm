@@ -17,7 +17,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
     Route::get('/records', [RecordController::class, 'index'])->name('records.index');
-    Route::get('/records/create', [RecordController::class, 'create'])->name('records.create');
+    Route::get('/records/add', [RecordController::class, 'create'])->name('records.create');
     Route::post('/records', [RecordController::class, 'store'])->name('records.store');
     
     Route::middleware(['auth', 'role:Administrator'])->group(function () {
