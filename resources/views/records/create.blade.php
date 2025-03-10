@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', 'Add Record')
+@include('components.navbar')
 
 @section('content')
     <h2>Add New Record</h2>
@@ -10,5 +12,7 @@
         <input type="text" name="category" placeholder="Category" required>
         <input type="text" name="isbn" placeholder="ISBN" required>
         <button type="submit">Save</button>
+
+        <a href="{{ route('records.index') }}" class="btn btn-secondary mt-3">Back to Records</a>
     </form>
 @endsection

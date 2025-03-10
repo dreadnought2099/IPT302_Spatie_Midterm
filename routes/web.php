@@ -5,7 +5,9 @@ use App\Http\Controllers\RecordController;
 use App\Models\Record;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return view('home');
+})->name('home');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/records', [RecordController::class, 'index'])
@@ -21,16 +23,16 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/records/{record}/edit', [RecordController::class, 'edit'])
         ->middleware('role:Administrator')
-        ->name('records.edit');    
+        ->name('records.edit');
 
     Route::put('/records/{record}', [RecordController::class, 'update'])
         ->middleware('role:Administrator')
-        ->name('records.update');    
+        ->name('records.update');
 
     Route::delete('/records/{record}', [RecordController::class, 'destroy'])
         ->middleware('role:Administrator')
-        ->name('records.destroy');    
+        ->name('records.destroy');
 
     Route::get('/records/{record}', [RecordController::class, 'show'])
         ->name('records.show');
-}); 
+});

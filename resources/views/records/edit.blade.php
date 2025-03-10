@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@include('components.navbar')
 
 @section('content')
     <h2>Edit Record</h2>
