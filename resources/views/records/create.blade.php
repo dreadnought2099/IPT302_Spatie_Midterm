@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto px-6 py-8">
-        <h1 class="text-2xl font-bold mb-6">Add Record</h1>
-        <form action="{{ route('records.store') }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div class="ontainer mx-auto max-w-7xl px-6 py-8 bg-white mt-4 border border-primary rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-6">Add <span class="text-primary">Record</span></h1>
+        <form action="{{ route('records.store') }}" method="POST" class="rounded-lg px-8 pt-6 pb-8 mb-4">
             @csrf
 
             {{-- Define reusable input field component --}}
@@ -44,7 +44,7 @@
 
             {{-- Submit Button --}}
             <div class="flex items-center justify-between">
-                <button type="submit" class="p-4 bg-primary hover:bg-gray-100 hover:text-primary border-1 hover:border-primary text-white font-medium py-2 rounded-lg transition duration-300">
+                <button type="submit" class="p-4 bg-white hover:text-primary border-1 hover:border-primary text-dark font-medium py-2 rounded-lg transition hover:scale-105 hover:opacity-80 duration-300 ease-in-out">
                     Create
                 </button>
             </div>

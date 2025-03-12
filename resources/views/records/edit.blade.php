@@ -3,8 +3,8 @@
 @section('title', 'Edit Record')
 
 @section('content')
-    <div class="container mx-auto px-4 py-8">
-        <h1 class="text-2xl font-bold mb-4">Edit Record</h1>
+    <div class="container mx-auto max-w-7xl px-6 py-8 bg-white mt-4 border border-primary rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Edit <span class="text-primary">Record</span></h1>
 
         {{-- Display Validation Errors --}}
         @if ($errors->any())
@@ -17,47 +17,49 @@
             </div>
         @endif
 
-        <form action="{{ route('records.update', $record) }}" method="POST" class="space-y-4 bg-white p-6 rounded shadow-md">
+        <form action="{{ route('records.update', $record) }}" method="POST" class="space-y-4 p-6 rounded-lg">
             @csrf
             @method('PUT')
 
             {{-- Title --}}
             <div>
                 <label class="block font-semibold">Title</label>
-                <input type="text" name="title" value="{{ old('title', $record->title) }}" required 
-                       class="w-full border border-gray-300 px-3 py-2 rounded focus:ring focus:ring-blue-300">
+                <input type="text" name="title" value="{{ old('title', $record->title) }}" required
+                    class="w-full border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary outline-none ring-gray-400">
             </div>
 
             {{-- Author --}}
             <div>
                 <label class="block font-semibold">Author</label>
-                <input type="text" name="author" value="{{ old('author', $record->author) }}" required 
-                       class="w-full border border-gray-300 px-3 py-2 rounded focus:ring focus:ring-blue-300">
+                <input type="text" name="author" value="{{ old('author', $record->author) }}" required
+                    class="w-full border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary outline-none  ring-gray-400">
             </div>
 
             {{-- Publication Year --}}
             <div>
                 <label class="block font-semibold">Publication Year</label>
-                <input type="number" name="publication_year" value="{{ old('publication_year', $record->publication_year) }}" required 
-                       class="w-full border border-gray-300 px-3 py-2 rounded focus:ring focus:ring-blue-300">
+                <input type="number" name="publication_year"
+                    value="{{ old('publication_year', $record->publication_year) }}" required
+                    class="w-full border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary outline-none ring-gray-400">
             </div>
 
             {{-- Category --}}
             <div>
                 <label class="block font-semibold">Category</label>
-                <input type="text" name="category" value="{{ old('category', $record->category) }}" required 
-                       class="w-full border border-gray-300 px-3 py-2 rounded focus:ring focus:ring-blue-300">
+                <input type="text" name="category" value="{{ old('category', $record->category) }}" required
+                    class="w-full border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary outline-none ring-gray-400">
             </div>
 
             {{-- ISBN --}}
             <div>
                 <label class="block font-semibold">ISBN</label>
-                <input type="text" name="isbn" value="{{ old('isbn', $record->isbn) }}" required 
-                       class="w-full border border-gray-300 px-3 py-2 rounded focus:ring focus:ring-blue-300">
+                <input type="text" name="isbn" value="{{ old('isbn', $record->isbn) }}" required
+                    class="w-full border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary outline-none ring-gray-400">
             </div>
 
             {{-- Submit Button --}}
-            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+            <button type="submit"
+                class="border-1 hover:border-primary bg-white hover:bg-white hover:text-primary text-dark font-bold py-2 px-4 rounded transition hover:scale-105 hover:opacity-80 duration-300 ease-in-out">
                 Update Record
             </button>
         </form>
