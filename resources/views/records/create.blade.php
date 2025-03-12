@@ -8,9 +8,14 @@
 
             {{-- Define reusable input field component --}}
             @php
-                $inputClasses = "peer bg-transparent py-3 w-full rounded-md text-gray-700 placeholder-transparent ring-1 px-4 ring-gray-400 focus:ring-2 focus:ring-primary focus:border-primary outline-none";
-                $labelClasses = "absolute cursor-text left-0 -top-3 text-sm text-gray-600 bg-inherit mx-1 px-1 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-primary peer-focus:text-sm";
+                $inputClasses =
+                    'peer bg-transparent py-3 w-full rounded-md text-gray-700 placeholder-transparent ring-1 px-4 ring-gray-400 focus:ring-2 focus:ring-primary focus:border-primary outline-none';
+                // $labelClasses =
+                //     'absolute cursor-text left-0 -top-3 text-sm text-gray-600 bg-white mx-1 px-1 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-primary peer-focus:text-sm peer-focus:bg-white';
+                    $labelClasses = "absolute cursor-text left-0 -top-3 text-sm text-gray-600 bg-white mx-1 px-1 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-primary peer-focus:text-sm peer-focus:bg-white peer-focus:px-2 peer-focus:rounded-md";
+
             @endphp
+
 
             {{-- Title Section --}}
             <div class="relative bg-inherit mb-6">
@@ -26,7 +31,8 @@
 
             {{-- Publication Year Section --}}
             <div class="relative bg-inherit mb-6">
-                <input type="number" name="publication_year" placeholder="Publication Year" required class="{{ $inputClasses }}">
+                <input type="number" name="publication_year" placeholder="Publication Year" required
+                    class="{{ $inputClasses }}">
                 <label for="publication_year" class="{{ $labelClasses }}">Publication Year</label>
             </div>
 
@@ -44,7 +50,8 @@
 
             {{-- Submit Button --}}
             <div class="flex items-center justify-between">
-                <button type="submit" class="p-4 bg-white hover:text-primary border-1 hover:border-primary text-dark font-medium py-2 rounded-lg transition hover:scale-105 hover:opacity-80 duration-300 ease-in-out">
+                <button type="submit"
+                    class="p-4 bg-white hover:text-primary border-1 hover:border-primary text-dark font-medium py-2 rounded-lg transition hover:scale-105 hover:opacity-80 duration-300 ease-in-out">
                     Create
                 </button>
             </div>

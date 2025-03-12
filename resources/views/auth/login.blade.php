@@ -26,7 +26,7 @@
             </div>
 
             <button type="submit"
-                class="mt-2 w-full bg-primary hover:bg-gray-100 hover:text-primary border-1 hover:border-primary text-white font-medium py-2 rounded-lg transition duration-300">
+                class="mt-2 w-full bg-primary hover:bg-white hover:text-primary border-1 hover:border-primary text-white font-medium py-2 rounded-lg transition duration-300">
                 Log in
             </button>
         </form>

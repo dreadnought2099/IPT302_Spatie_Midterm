@@ -21,18 +21,23 @@
             @csrf
             @method('PUT')
 
+            {{-- Reusable input class --}}
+            @php
+                $inputClasses = 'w-full border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary outline-none ring-gray-400';
+            @endphp
+
             {{-- Title --}}
             <div>
                 <label class="block font-semibold">Title</label>
                 <input type="text" name="title" value="{{ old('title', $record->title) }}" required
-                    class="w-full border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary outline-none ring-gray-400">
+                    class="{{ $inputClasses }}">
             </div>
 
             {{-- Author --}}
             <div>
                 <label class="block font-semibold">Author</label>
                 <input type="text" name="author" value="{{ old('author', $record->author) }}" required
-                    class="w-full border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary outline-none  ring-gray-400">
+                    class="{{ $inputClasses }}">
             </div>
 
             {{-- Publication Year --}}
@@ -40,21 +45,21 @@
                 <label class="block font-semibold">Publication Year</label>
                 <input type="number" name="publication_year"
                     value="{{ old('publication_year', $record->publication_year) }}" required
-                    class="w-full border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary outline-none ring-gray-400">
+                    class="{{ $inputClasses }}">
             </div>
 
             {{-- Category --}}
             <div>
                 <label class="block font-semibold">Category</label>
                 <input type="text" name="category" value="{{ old('category', $record->category) }}" required
-                    class="w-full border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary outline-none ring-gray-400">
+                    class="{{ $inputClasses }}">
             </div>
 
             {{-- ISBN --}}
             <div>
                 <label class="block font-semibold">ISBN</label>
                 <input type="text" name="isbn" value="{{ old('isbn', $record->isbn) }}" required
-                    class="w-full border border-gray-400 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary outline-none ring-gray-400">
+                    class="{{ $inputClasses }}">
             </div>
 
             {{-- Submit Button --}}
