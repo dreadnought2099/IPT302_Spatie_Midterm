@@ -52,5 +52,22 @@
                 @endforeach
             </tbody>
         </table>
+        <div id="success-message-container" class="min-h-[10px]">
+          @if (session('success') || session('info'))
+                <div id="message" class="p-3 rounded-md mb-4
+                    {{ session('success') ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700' }}">
+                    {{ session('success') ?? session('info') }}
+                </div>
+                
+                <script>
+                    setTimeout(() => {
+                        let messageDiv = document.getElementById('message');
+                        if (messageDiv) {
+                            messageDiv.style.display = 'none';
+                        }
+                    }, 3000);
+                </script>
+          @endif
+        </div>  
     </div>
 @endsection

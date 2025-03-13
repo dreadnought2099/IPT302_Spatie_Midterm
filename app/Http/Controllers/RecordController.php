@@ -44,7 +44,7 @@ class RecordController extends Controller
     // Responsible for handling updates of  records
     public function update(Request $request, Record $record)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'title' => 'required|string|max:200',
             'author' => 'required|string|max:100',
             'publication_year' => 'required|integer|min:1000|max:' . date('Y'),
@@ -52,9 +52,15 @@ class RecordController extends Controller
             'isbn' => 'required|unique:records,isbn,' . $record->id,
         ]);
 
-        $record->update($request->all());
+        $record->fill($validatedData);
 
-        return redirect()->route('records.index')->with('success', 'Record updated successfully!');
+        if ($record->isDirty()) {
+            $record->save();
+            return redirect()->route('records.index')->with('success', 'Record updated successfully!');
+        }
+
+        // dd($request->all());
+        return redirect()->route('records.index')->with('info', 'No changes were made!');
     }
 
     // Responsible for  destroying of  records

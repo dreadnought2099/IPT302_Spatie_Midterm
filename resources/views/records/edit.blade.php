@@ -11,7 +11,7 @@
 
         </div>
         {{-- Display Validation Errors --}}
-        <div class="min-h-[40px]">
+        <div class="min-h-[50px]">
             @if ($errors->any())
                 <div class="bg-red-100 text-red-700 p-3">
                     <ul>
@@ -76,10 +76,10 @@
                 </button>
 
                 {{-- Back Button --}}
-                <button type="submit" href="{{ route('records.index') }}"
+                <a type="submit" href="{{ route('records.index') }}"
                     class="border-1 hover:border-primary bg-white hover:bg-white hover:text-primary text-dark font-bold py-2 px-4 rounded-lg transition hover:scale-105 hover:opacity-80 duration-300 ease-in-out">
                     Back
-                </button>
+                </a>
             </div>
         </form>
     </div>
