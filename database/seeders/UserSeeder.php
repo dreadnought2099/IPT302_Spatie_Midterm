@@ -5,9 +5,11 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
+
 {
     /**
      * Run the database seeds.
@@ -17,13 +19,13 @@ class UserSeeder extends Seeder
         $admin = User::create([
             'name' => 'Admin User',
             'email' => 'admin@mail.com',
-            'password' => bcrypt('iamadmin'),
+            'password' => Hash::make('iamadmin'),
         ]);
 
         $dataEntry = User::create([
             'name' => 'Data Entry User',
             'email' => 'dataentry@mail.com',
-            'password' => bcrypt('iamdataentry'),
+            'password' => Hash::make('iamdataentry'),
         ]);
 
         $admin->assignRole('Administrator');

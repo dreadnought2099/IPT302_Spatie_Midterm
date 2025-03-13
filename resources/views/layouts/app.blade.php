@@ -18,4 +18,11 @@
     </div>
 </body>
 
+
 </html>
+
+<style>
+    ::-webkit-scrollbar {
+        display: none;
+    }
+</style>

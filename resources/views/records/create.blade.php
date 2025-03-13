@@ -1,18 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="ontainer mx-auto max-w-7xl px-6 py-8 bg-white mt-4 border border-primary rounded-lg shadow-md">
-        <h1 class="text-2xl font-bold mb-6">Add <span class="text-primary">Record</span></h1>
+    <div
+        class="container mx-auto max-w-5xl bg-white mt-4 border border-primary rounded-lg shadow-md overflow-y-auto h-[80vh]">
+
+        <h1 class="flex gap-[5px] sticky top-0 py-2 px-4 text-2xl font-bold bg-white  z-10
+        ">Create <span
+                class="text-primary"> Record</span></h1>
+
+
         <form action="{{ route('records.store') }}" method="POST" class="rounded-lg px-8 pt-6 pb-8 mb-4">
             @csrf
 
             {{-- Define reusable input field component --}}
             @php
                 $inputClasses =
-                    'peer bg-transparent py-3 w-full rounded-md text-gray-700 placeholder-transparent ring-1 px-4 ring-gray-400 focus:ring-2 focus:ring-primary focus:border-primary outline-none';
+                    'peer py-3 w-full placeholder-transparent rounded-md text-gray-700  ring-1 px-4 ring-gray-400 focus:ring-2 focus:ring-primary focus:border-primary outline-none';
                 // $labelClasses =
                 //     'absolute cursor-text left-0 -top-3 text-sm text-gray-600 bg-white mx-1 px-1 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-primary peer-focus:text-sm peer-focus:bg-white';
-                    $labelClasses = "absolute cursor-text left-0 -top-3 text-sm text-gray-600 bg-white mx-1 px-1 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-primary peer-focus:text-sm peer-focus:bg-white peer-focus:px-2 peer-focus:rounded-md";
+                $labelClasses =
+                    'absolute cursor-text left-0 -top-3 text-sm text-gray-600 bg-white mx-1 px-1 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-primary peer-focus:text-sm peer-focus:bg-white peer-focus:px-2 peer-focus:rounded-md';
 
             @endphp
 
