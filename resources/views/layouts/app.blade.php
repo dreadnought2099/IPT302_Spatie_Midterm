@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    <link rel="icon" href="icon/record.png">
+    <link rel="icon" href="{{ asset('/icon/record.png') }}">
     <title>IPT Midterm</title>
 </head>
 
