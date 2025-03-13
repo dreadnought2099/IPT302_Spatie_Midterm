@@ -5,7 +5,7 @@
         class="container mx-auto max-w-5xl bg-white mt-4 border border-primary rounded-lg shadow-md overflow-y-auto h-[80vh]">
 
         <h1 class="flex gap-[5px] sticky top-0 py-2 px-4 text-2xl font-bold bg-white  z-10
-        ">Create <span
+        ">Add <span
                 class="text-primary"> Record</span></h1>
 
 
@@ -26,41 +26,47 @@
 
             {{-- Title Section --}}
             <div class="relative bg-inherit mb-6">
-                <input type="text" name="title" placeholder="Title" required class="{{ $inputClasses }}">
+                <input type="text" name="title" placeholder="Title" class="{{ $inputClasses }}">
                 <label for="title" class="{{ $labelClasses }}">Title</label>
             </div>
 
             {{-- Author Section --}}
             <div class="relative bg-inherit mb-6">
-                <input type="text" name="author" placeholder="Author" required class="{{ $inputClasses }}">
+                <input type="text" name="author" placeholder="Author" class="{{ $inputClasses }}">
                 <label for="author" class="{{ $labelClasses }}">Author</label>
             </div>
 
             {{-- Publication Year Section --}}
             <div class="relative bg-inherit mb-6">
-                <input type="number" name="publication_year" placeholder="Publication Year" required
-                    class="{{ $inputClasses }}">
+                <input type="number" name="publication_year" placeholder="Publication Year" class="{{ $inputClasses }}">
                 <label for="publication_year" class="{{ $labelClasses }}">Publication Year</label>
             </div>
 
             {{-- Category Section --}}
             <div class="relative bg-inherit mb-6">
-                <input type="text" name="category" placeholder="Category" required class="{{ $inputClasses }}">
+                <input type="text" name="category" placeholder="Category" class="{{ $inputClasses }}">
                 <label for="category" class="{{ $labelClasses }}">Category</label>
             </div>
 
             {{-- ISBN Section --}}
             <div class="relative bg-inherit mb-6">
-                <input type="text" name="isbn" placeholder="ISBN" required class="{{ $inputClasses }}">
+                <input type="text" name="isbn" placeholder="ISBN" class="{{ $inputClasses }}">
                 <label for="isbn" class="{{ $labelClasses }}">ISBN</label>
             </div>
 
-            {{-- Submit Button --}}
-            <div class="flex items-center justify-between">
+            <div class="flex flex-col space-y-4 md:flex-row  md:space-x-4 md:space-y-0">
+
+                {{-- Add Button --}}
                 <button type="submit"
-                    class="p-4 bg-white hover:text-primary border-1 hover:border-primary text-dark font-medium py-2 rounded-lg transition hover:scale-105 hover:opacity-80 duration-300 ease-in-out">
-                    Create
+                    class="border-1 hover:border-primary bg-dark hover:bg-white hover:text-primary text-white font-bold py-2 px-4 rounded-lg transition hover:scale-105 hover:opacity-80 duration-300 ease-in-out   ">
+                    Add record
                 </button>
+
+                {{-- Back Button --}}
+                <a href="{{ route('records.index') }}"
+                    class="border-1 hover:border-primary bg-white hover:bg-white hover:text-primary text-dark font-bold py-2 px-4 rounded-lg transition hover:scale-105 hover:opacity-80 duration-300 ease-in-out">
+                    Back
+                </a>
             </div>
         </form>
     </div>

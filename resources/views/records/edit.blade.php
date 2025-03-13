@@ -11,17 +11,19 @@
 
         </div>
         {{-- Display Validation Errors --}}
-        @if ($errors->any())
-            <div class="bg-red-100 text-red-700 p-3 rounded">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        <div class="min-h-[40px]">
+            @if ($errors->any())
+                <div class="bg-red-100 text-red-700 p-3">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        </div>
 
-        <form action="{{ route('records.update', $record) }}" method="POST" class="space-y-4 p-6 rounded-lg">
+        <form action="{{ route('records.update', $record) }}" method="POST" class="space-y-4 p-6 mb-6 rounded-lg">
             @csrf
             @method('PUT')
 
@@ -66,11 +68,19 @@
                     class="{{ $inputClasses }}">
             </div>
 
-            {{-- Submit Button --}}
-            <button type="submit"
-                class="border-1 hover:border-primary bg-white hover:bg-white hover:text-primary text-dark font-bold py-2 px-4 rounded transition hover:scale-105 hover:opacity-80 duration-300 ease-in-out">
-                Update Record
-            </button>
+            <div class="flex flex-col space-y-4 md:flex-row  md:space-x-4 md:space-y-0">
+                {{-- Update Record Button --}}
+                <button type="submit"
+                    class="border-1 hover:border-primary bg-dark hover:bg-white hover:text-primary text-white font-bold py-2 px-4 rounded-lg transition hover:scale-105 hover:opacity-80 duration-300 ease-in-out">
+                    Update Record
+                </button>
+
+                {{-- Back Button --}}
+                <button type="submit" href="{{ route('records.index') }}"
+                    class="border-1 hover:border-primary bg-white hover:bg-white hover:text-primary text-dark font-bold py-2 px-4 rounded-lg transition hover:scale-105 hover:opacity-80 duration-300 ease-in-out">
+                    Back
+                </button>
+            </div>
         </form>
     </div>
 @endsection
