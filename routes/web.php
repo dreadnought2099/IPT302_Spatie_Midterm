@@ -3,6 +3,7 @@
 use App\Http\Controllers\RecordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegistrationController;
 
 Route::get('/', function () {
     return view('home');
@@ -11,6 +12,8 @@ Route::get('/', function () {
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
+    Route::get('register', [RegistrationController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [RegistrationController::class, 'register']);
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -19,7 +22,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/records', [RecordController::class, 'index'])->name('records.index');
     Route::get('/records/add', [RecordController::class, 'create'])->name('records.create');
     Route::post('/records', [RecordController::class, 'store'])->name('records.store');
-    
+
     Route::middleware(['role:Administrator'])->group(function () {
         Route::get('/records/{record}/edit', [RecordController::class, 'edit'])->name('records.edit');
         Route::put('/records/{record}', [RecordController::class, 'update'])->name('records.update');

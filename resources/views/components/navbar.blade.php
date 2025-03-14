@@ -9,7 +9,6 @@
         <a href="{{ url('/') }}" class="hover-underline">Home</a>
         <a href="{{ route('records.index') }}" class="hover-underline">Records</a>
         <a href="{{ route('records.create') }}" class="hover-underline">Add Record</a>
-        {{-- <a href="{{ route('records.edit') }}" class="hover-underline">Edit Record</a> --}}
         @auth
 
             <form action="{{ route('logout') }}" method="POST">
@@ -17,6 +16,7 @@
                 <button type="submit" class="hover-underline">Logout</button>
             </form>
         @else
+            <a href="{{ route('register') }}" class="hover-underline">Register</a>
             <a href="{{ route('login') }}" class="hover-underline">Login</a>
         @endauth
     </div>
