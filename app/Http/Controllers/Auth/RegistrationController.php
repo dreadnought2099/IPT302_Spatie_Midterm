@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 use App\Models\User;
 
 class RegistrationController extends Controller
@@ -23,22 +22,17 @@ class RegistrationController extends Controller
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:8|confirmed',
             ]);
-    
+
+
             $user = User::create([
                 'name' => $validated['name'],
                 'email' => $validated['email'],
                 'password' => Hash::make($validated['password']),
             ]);
             
-            if (!$user) {
-                return back()->with('error', 'Registration failed! Please try again.');
-            }
-
             // Ma login ang user after successfully registering
             Auth::login($user);
             
-            Session()->flash('success', "Registration successful! Welcome, {$user->name}.");
-    
-            return redirect()->route('records.index');
+            return redirect()->route('records.index')->with('success', "Registration Successful! Welcome, {$user->name}.");
     }
 }

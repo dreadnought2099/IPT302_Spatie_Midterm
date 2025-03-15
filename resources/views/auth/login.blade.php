@@ -7,15 +7,15 @@
             @csrf
             <h2 class="text-2xl font-bold text-dark text-center mb-6">Log <span class="text-primary">in</span></h2>
 
-            <div class="h-[35px] flex items-center justify-center">
+            <div class="h-[30px] flex items-center justify-center">
                 @if (session('error'))
-                    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded-md">
+                    <div class="bg-red-100 border-l-4 border-primary text-primary p-3 rounded-md">
                         {{ session('error') }}
                     </div>
-                @elseif (session('success'))
+                {{-- @elseif (session('success'))
                     <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-2 rounded-md w-full text-center">
                         {{ session('success') }}
-                    </div>
+                    </div> --}}
                 @endif
             </div>
 
