@@ -8,6 +8,20 @@
 
             <h2 class="text-2xl font-bold text-dark text-center mb-6">Register<span class="text-primary">!</span></h2>
 
+            <div class="pt-4">
+                @if (session('success'))
+                    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 rounded-md mb-4">
+                        {{ session('success') }}
+                    </div>
+                @endif
+    
+                @if (session('error'))
+                    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded-md mb-4">
+                        {{ session('error') }}
+                    </div>
+                @endif
+            </div>
+            
             <div class="relative bg-inherit">
                 <input type="text" id="name" name="name" placeholder="name" value="{{ old('name') }}" required
                     class="peer bg-transparent py-3 w-full rounded-md text-gray-700 placeholder-transparent ring-1 px-4 ring-gray-400 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
@@ -59,21 +73,6 @@
                     </a>
                 </div>
             </div>
-            
-            <div class="pt-4">
-                @if (session('success'))
-                    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 rounded-md mb-4">
-                        {{ session('success') }}
-                    </div>
-                @endif
-    
-                @if (session('error'))
-                    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded-md mb-4">
-                        {{ session('error') }}
-                    </div>
-                @endif
-            </div>
-            
         </form>
     </div>
 @endsection

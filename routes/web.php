@@ -4,6 +4,7 @@ use App\Http\Controllers\RecordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegistrationController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('home');
@@ -22,6 +23,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/records', [RecordController::class, 'index'])->name('records.index');
     Route::get('/records/add', [RecordController::class, 'create'])->name('records.create');
     Route::post('/records', [RecordController::class, 'store'])->name('records.store');
+
+    // Profile 
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 
     Route::middleware(['role:Administrator'])->group(function () {
         Route::get('/records/{record}/edit', [RecordController::class, 'edit'])->name('records.edit');
