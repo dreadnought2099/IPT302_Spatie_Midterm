@@ -12,10 +12,10 @@
                     <div class="bg-red-100 border-l-4 border-primary text-primary p-3 rounded-md">
                         {{ session('error') }}
                     </div>
-                {{-- @elseif (session('success'))
+                @elseif (session('success'))
                     <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-2 rounded-md w-full text-center">
                         {{ session('success') }}
-                    </div> --}}
+                    </div>
                 @endif
             </div>
 

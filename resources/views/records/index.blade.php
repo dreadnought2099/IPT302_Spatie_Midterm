@@ -3,11 +3,36 @@
 
 @section('content')
     <div class="container mx-auto px-4 py-8">
-        <h1 class="text-2xl font-bold mb-4">Records</h1>
-        <a href="{{ route('records.create') }}"
-            class="bg-dark hover:bg-gray-100 hover:text-primary border-2 hover:border-primary text-white font-bold py-2 px-4 rounded-lg mb-4 inline-block hover:scale-105 hover:opacity-80 duration-300 ease-in-out">
-            Add Record
-        </a>
+        <div class="relative w-full">
+            {{-- Session Message --}}
+            <div id="success-message-container" class="absolute top-4 right-4 z-50">
+                @if (session('success') || session('info'))
+                    <div id="message"
+                        class="p-3 rounded-md shadow-lg border-l-4
+                      {{ session('success') ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700' }}">
+                        {{ session('success') ?? session('info') }}
+                    </div>
+
+                    <script>
+                        setTimeout(() => {
+                            let messageDiv = document.getElementById('message');
+                            if (messageDiv) {
+                                messageDiv.style.display = 'none';
+                            }
+                        }, 3000);
+                    </script>
+                @endif
+            </div>
+
+            <div class="flex flex-col w-full space-y-4">
+                <h1 class="text-4xl font-bold">Records</h1>
+
+                <a href="{{ route('records.create') }}"
+                    class="w-fit bg-dark hover:bg-gray-100 hover:text-primary border-2 hover:border-primary text-white font-bold py-2 px-4 rounded-lg mb-4 inline-block hover:scale-105 hover:opacity-80 duration-300 ease-in-out">
+                    Add Record
+                </a>
+            </div>
+        </div>
 
         <table class="min-w-full bg-white border border-gray-300">
             <thead class="bg-gray-100">
@@ -52,22 +77,6 @@
                 @endforeach
             </tbody>
         </table>
-        <div id="success-message-container" class="min-h-[10px]">
-          @if (session('success') || session('info'))
-                <div id="message" class="p-3 rounded-md mb-4
-                    {{ session('success') ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700' }}">
-                    {{ session('success') ?? session('info') }}
-                </div>
-                
-                <script>
-                    setTimeout(() => {
-                        let messageDiv = document.getElementById('message');
-                        if (messageDiv) {
-                            messageDiv.style.display = 'none';
-                        }
-                    }, 3000);
-                </script>
-          @endif
-        </div>  
+
     </div>
 @endsection

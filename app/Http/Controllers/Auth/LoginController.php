@@ -20,11 +20,15 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
+        // Error message
         if (!Auth::attempt($validated)) {
            return back()->with('error', 'Invalid email or password');           
         }
 
-        return redirect()->route('records.index');
+        $user = Auth::user();
+
+        // success message
+        return redirect()->route('records.index')->with('success', "Login successful! Welcome, {$user->name}.");
     }
 
     public function logout(Request $request)
