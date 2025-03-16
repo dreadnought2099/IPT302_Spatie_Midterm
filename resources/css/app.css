@@ -19,6 +19,10 @@
         --color-dark: #212121;
         /* -color-hover: #9f444c; */
     }
+
+    html {
+        scroll-behavior: smooth;
+    }
 }
 
 @layer utilities {

@@ -9,7 +9,7 @@
             <div class="space-y-3">
                 <p><strong>Name: </strong>{{ $user->name }}</p>
                 <p><strong>Email: </strong>{{ $user->email }}</p>
-                <p><strong>Joined: </strong>{{ $user->created_at->format('F, d, Y') }}</p>
+                <p><strong>Joined: </strong>{{ $user->created_at->format('F d, Y') }}</p>
             </div>
         </div>
     </div>

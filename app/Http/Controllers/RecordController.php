@@ -11,13 +11,13 @@ class RecordController extends Controller
     public function index()
     {
         $records = Record::all();
-        return view('records.index', compact('records'));
+        return view('pages.records.index', compact('records'));
     }
 
     // Responsible for handling creation of  records
     public function create()
     {
-        return view('records.create');
+        return view('pages.records.create');
     }
 
     // Responsible for handling storing of  records
@@ -33,8 +33,8 @@ class RecordController extends Controller
 
 
         try {
-            Record::create($request->all());
-            return redirect()->route('records.index')->with('success', 'Record added successfully!');
+            $record = Record::create($request->all());
+            return redirect()->route('records.index')->with('success', "Record with ID {$record->id} was added successfully!");
 
         } catch (Exception $e) {
             return redirect()->route('records.index')->with('error', 'Failed to add record. Please try again.');
@@ -45,7 +45,7 @@ class RecordController extends Controller
     // Responsible for handling editing of  records
     public function edit(Record $record)
     {
-        return view('records.edit', compact('record'));
+        return view('pages.records.edit', compact('record'));
     }
 
     // Responsible for handling updates of  records
@@ -74,6 +74,6 @@ class RecordController extends Controller
     public function destroy(Record $record)
     {
         $record->delete();
-        return redirect()->route('records.index')->with('success', 'Record deleted successfully!');
+        return redirect()->route('records.index')->with('success', "Record with ID {$record->id} was deleted successfully!");
     }
 }

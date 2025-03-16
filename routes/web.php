@@ -20,16 +20,20 @@ Route::middleware('guest')->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
-    Route::get('/records', [RecordController::class, 'index'])->name('records.index');
-    Route::get('/records/add', [RecordController::class, 'create'])->name('records.create');
-    Route::post('/records', [RecordController::class, 'store'])->name('records.store');
+    // Record routes
+    Route::prefix('records')->group(function () {
+        Route::get('/', [RecordController::class, 'index'])->name('records.index');
+        Route::get('/add', [RecordController::class, 'create'])->name('records.create');
+        Route::post('/', [RecordController::class, 'store'])->name('records.store');
+
+        // Administrator 
+        Route::middleware(['role:Administrator'])->group(function () {
+            Route::get('/{record}/edit', [RecordController::class, 'edit'])->name('records.edit');
+            Route::put('/{record}', [RecordController::class, 'update'])->name('records.update');
+            Route::delete('/{record}', [RecordController::class, 'destroy'])->name('records.destroy');
+        });
+    });
 
     // Profile 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-
-    Route::middleware(['role:Administrator'])->group(function () {
-        Route::get('/records/{record}/edit', [RecordController::class, 'edit'])->name('records.edit');
-        Route::put('/records/{record}', [RecordController::class, 'update'])->name('records.update');
-        Route::delete('/records/{record}', [RecordController::class, 'destroy'])->name('records.destroy');
-    });
 });
