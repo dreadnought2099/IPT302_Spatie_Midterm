@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Record;
+use Exception;
 
 class RecordController extends Controller
 {
@@ -30,9 +31,15 @@ class RecordController extends Controller
             'isbn' => 'required|unique:records,isbn',
         ]);
 
-        Record::create($request->all());
 
-        return redirect()->route('records.index')->with('success', 'Record added successfully!');
+        try {
+            Record::create($request->all());
+            return redirect()->route('records.index')->with('success', 'Record added successfully!');
+
+        } catch (Exception $e) {
+            return redirect()->route('records.index')->with('error', 'Failed to add record. Please try again.');
+
+        }
     }
 
     // Responsible for handling editing of  records
@@ -56,11 +63,11 @@ class RecordController extends Controller
 
         if ($record->isDirty()) {
             $record->save();
-            return redirect()->route('records.index')->with('success', 'Record updated successfully!');
+            return redirect()->route('records.index')->with('success', "Record with ID {$record->id} was updated successfully.");
         }
 
         // dd($request->all());
-        return redirect()->route('records.index')->with('info', 'No changes were made!');
+        return redirect()->route('records.index')->with('info', "No changes were made in ID {$record->id}.");
     }
 
     // Responsible for  destroying of  records

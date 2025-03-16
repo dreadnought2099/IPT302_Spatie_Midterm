@@ -4,12 +4,12 @@
     <div
         class="container mx-auto max-w-5xl bg-white mt-4 border border-primary rounded-lg shadow-md overflow-y-auto h-[80vh]">
 
-        <h1 class="flex gap-[5px] sticky top-0 py-2 px-4 text-2xl font-bold bg-white  z-10
+        <h1 class="flex gap-[5px] sticky top-0 py-2 px-4 text-2xl font-bold bg-white z-10
         ">Add <span
                 class="text-primary"> Record</span></h1>
 
-
-        <form action="{{ route('records.store') }}" method="POST" class="rounded-lg px-8 pt-6 pb-8 mb-4">
+        {{-- Form --}}
+        <form action="{{ route('records.store') }}" method="POST" class="rounded-lg px-8 pt-6 pb-8 mb-4 space-y-6">
             @csrf
 
             {{-- Define reusable input field component --}}
@@ -22,38 +22,26 @@
             @endphp
 
 
-            {{-- Title Section --}}
-            <div class="relative bg-inherit mb-6">
-                <input type="text" name="title" placeholder="Title" class="{{ $inputClasses }}">
-                <label for="title" class="{{ $labelClasses }}">Title</label>
-            </div>
 
-            {{-- Author Section --}}
-            <div class="relative bg-inherit mb-6">
-                <input type="text" name="author" placeholder="Author" class="{{ $inputClasses }}">
-                <label for="author" class="{{ $labelClasses }}">Author</label>
-            </div>
+            @foreach (['title' => 'Title', 'author' => 'Author', 'publication_year' => 'Publication Year', 'category' => 'Category', 'isbn' => 'ISBN'] as $name => $label)
+                <div class="relative bg-inherit">
+                    <input type="{{ $name === 'publication_year' ? 'number' : 'text' }}" name="{{ $name }}"
+                        placeholder="{{ $label }}" value="{{ old($name) }}"
+                        class="{{ $inputClasses }} @error($name) ring-primary @enderror">
+                    <label class="{{ $labelClasses }}">{{ $label }}</label>
 
-            {{-- Publication Year Section --}}
-            <div class="relative bg-inherit mb-6">
-                <input type="number" name="publication_year" placeholder="Publication Year" class="{{ $inputClasses }}">
-                <label for="publication_year" class="{{ $labelClasses }}">Publication Year</label>
-            </div>
+                    {{-- Reserve space for error messages --}}
+                    <p class="text-primary text-sm min-h-[20px]">
+                        @error($name)
+                            {{ $message }}
+                        @enderror
+                    </p>
+                </div>
+            @endforeach
 
-            {{-- Category Section --}}
-            <div class="relative bg-inherit mb-6">
-                <input type="text" name="category" placeholder="Category" class="{{ $inputClasses }}">
-                <label for="category" class="{{ $labelClasses }}">Category</label>
-            </div>
 
-            {{-- ISBN Section --}}
-            <div class="relative bg-inherit mb-6">
-                <input type="text" name="isbn" placeholder="ISBN" class="{{ $inputClasses }}">
-                <label for="isbn" class="{{ $labelClasses }}">ISBN</label>
-            </div>
-
+            {{-- Buttons --}}
             <div class="flex flex-col space-y-4 md:flex-row  md:space-x-4 md:space-y-0">
-
                 {{-- Add Button --}}
                 <button type="submit"
                     class="border-1 hover:border-primary bg-dark hover:bg-white hover:text-primary text-white font-bold py-2 px-4 rounded-lg transition hover:scale-105 hover:opacity-80 duration-300 ease-in-out   ">
@@ -66,6 +54,12 @@
                     Back
                 </a>
             </div>
+            @if (session('success') || session('error'))
+                <div
+                    class="min-h-[50px] p-3 rounded mb-3 text-white {{ session('success') ? 'bg-green-500' : 'bg-primary' }}">
+                    {{ session('success') ?? session('error') }}
+                </div>
+            @endif
         </form>
     </div>
 @endsection
