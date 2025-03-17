@@ -33,7 +33,7 @@ class RegistrationController extends Controller
             ]);
             
             // Should send email first before redirecting
-            Mail::to($user->email)->send(new WelcomeMail($user));
+            Mail::to($user->email)->queue(new WelcomeMail($user));
             
             // Ma login ang user after successfully registering
             Auth::login($user);
