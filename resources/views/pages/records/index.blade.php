@@ -5,7 +5,7 @@
     <div class="container mx-auto px-4 py-8 mb pb-20">
         <div class="relative w-full">
             {{-- Session Message --}}
-            <div id="success-message-container" class="absolute top-4 right-4 z-50">
+            <div id="success-message-container" class="absolute top-4 right-4 z-0">
                 @if (session('success') || session('info'))
                     <div id="message"
                         class="p-3 rounded-md shadow-lg border-l-4

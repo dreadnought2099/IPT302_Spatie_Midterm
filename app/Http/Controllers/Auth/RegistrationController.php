@@ -36,7 +36,7 @@ class RegistrationController extends Controller
         Mail::to($user->email)->queue(new WelcomeMail($user));
 
         // Ma login ang user after successfully registering
-
+        // Auth::login($user);
 
         return redirect()->route('records.index')->with('success', "Registration successful! Welcome, {$user->name}.");
     }
