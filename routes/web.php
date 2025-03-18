@@ -13,6 +13,7 @@ Route::get('/', function () {
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
+
     Route::get('register', [RegistrationController::class, 'showRegistrationForm'])->name('register');
     Route::post('register', [RegistrationController::class, 'register']);
 });
@@ -26,7 +27,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/add', [RecordController::class, 'create'])->name('records.create');
         Route::post('/', [RecordController::class, 'store'])->name('records.store');
 
-        // Administrator 
+        // Administrator
         Route::middleware(['role:Administrator'])->group(function () {
             Route::get('/{record}/edit', [RecordController::class, 'edit'])->name('records.edit');
             Route::put('/{record}', [RecordController::class, 'update'])->name('records.update');
@@ -34,6 +35,6 @@ Route::middleware(['auth'])->group(function () {
         });
     });
 
-    // Profile 
+    // Profile
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 });

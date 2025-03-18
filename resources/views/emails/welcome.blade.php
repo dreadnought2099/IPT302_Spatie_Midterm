@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Welcome Mail</title>
 </head>
@@ -15,6 +16,8 @@
         <p style="color: #333; font-size: 16px;">Welcome to our application. We're glad to have you on board!</p>
         <p style="color: #333; font-size: 10px; margin-top: 20px;">Feel free to explore and contact us if you have any
             questions.</p>
+
+        <a href="http://127.0.0.1:8000/login">Click here to login</a>
         <p style="font-weight: bold;">Best regards,</p>
         <p style="color: #a31621; font-size: 14px; font-weight: bold;">Admin</p>
     </div>
