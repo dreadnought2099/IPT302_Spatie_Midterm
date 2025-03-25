@@ -14,10 +14,13 @@
             </span>
         </h1>
         <p style="color: #333; font-size: 16px;">Welcome to our application. We're glad to have you on board!</p>
-        <p style="color: #333; font-size: 10px; margin-top: 20px;">Feel free to explore and contact us if you have any
-            questions.</p>
+        <p style="color: #333; font-size: 16px;">Before you start, please verify your email address by clicking the button below:</p>
 
-        <a href="http://127.0.0.1:8000/login">Click here to login</a>
+        <a href="{{ $verificationUrl }}" style="display:inline-block; padding:10px 20px; background-color:#28a745; color:#fff; text-decoration:none; font-weight:bold;">
+            Verify Email
+        </a>
+
+        <p style="color: #333; font-size: 10px; margin-top: 20px;">If you didn’t create an account, disregard this email.</p>
         <p style="font-weight: bold;">Best regards,</p>
         <p style="color: #a31621; font-size: 14px; font-weight: bold;">Admin</p>
     </div>

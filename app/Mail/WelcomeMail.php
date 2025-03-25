@@ -8,16 +8,25 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Support\Facades\URL;
+use Carbon\Carbon;
 
 class WelcomeMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
     public $user;
+    public $verificationUrl;
 
     public function __construct($user)
     {
         $this->user = $user;
+        $this->verificationUrl = URL::temporarySignedRoute(
+            'verification.verify',  // The built-in verification route
+            Carbon::now()->addMinutes(60), // Expiry time (60 minutes)
+            ['id' => $this->user->id, 'hash' => sha1($this->user->email)]
+        );
     }
 
     /**
@@ -26,7 +35,7 @@ class WelcomeMail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome to IPT Midterm',
+            subject: 'Welcome to IPT Midterm | Verify your Email',
         );
     }
 
@@ -39,6 +48,7 @@ class WelcomeMail extends Mailable implements ShouldQueue
             view: 'emails.welcome',
             with: [
                 'user' => $this->user,
+                'verificationUrl' => $this->verificationUrl, // Ipasa ang verification link
             ],
         );
     }

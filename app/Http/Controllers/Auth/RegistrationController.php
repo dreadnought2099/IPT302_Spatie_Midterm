@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Mail\WelcomeMail;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;    
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Mail;
 
 class RegistrationController extends Controller
@@ -35,8 +36,10 @@ class RegistrationController extends Controller
         // Should send email first before redirecting
         Mail::to($user->email)->queue(new WelcomeMail($user));
 
+        $user->sendEmailVerificationNotification();
+
         // Ma login ang user after successfully registering
-        // Auth::login($user);
+        Auth::login($user);
 
         return redirect()->route('records.index')->with('success', "Registration successful! Welcome, {$user->name}.");
     }

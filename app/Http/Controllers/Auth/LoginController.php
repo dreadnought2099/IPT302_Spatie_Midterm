@@ -31,6 +31,13 @@ class LoginController extends Controller
         return redirect()->route('records.index')->with('success', "Login successful! Welcome, {$user->name}.");
     }
 
+    protected function authenticated(Request $request, $user) {
+        if (!$user->hasVerifiedEmail()) {
+            Auth::logout();
+            return redirect()->route('verification.notice')->with('error', 'Verify your email first before logging in.');
+        }
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();
