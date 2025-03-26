@@ -36,7 +36,7 @@ class RegistrationController extends Controller
         // Should send email first before redirecting
         Mail::to($user->email)->queue(new WelcomeMail($user));
 
-        $user->sendEmailVerificationNotification();
+        // $user->sendEmailVerificationNotification();
 
         // Ma login ang user after successfully registering
         Auth::login($user);
