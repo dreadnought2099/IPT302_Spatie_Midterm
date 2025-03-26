@@ -10,7 +10,7 @@ use App\Http\Controllers\Auth\VerificationController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Auth::routes(['verify' => true]);
 
