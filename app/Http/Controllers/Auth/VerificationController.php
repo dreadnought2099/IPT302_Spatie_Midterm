@@ -20,7 +20,7 @@ class VerificationController
     public function verify(EmailVerificationRequest $request)
     {
         $request->fulfill();
-        return redirect('home')->with('status', 'Your email has been successfully verified!');
+        return redirect('/')->with('status', 'Your email has been successfully verified!');
     }
 
     public function resend(Request $request)
