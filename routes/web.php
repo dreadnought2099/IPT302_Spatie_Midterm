@@ -47,6 +47,9 @@ Route::middleware('auth')->group(function () {
 // Logout outside the verified middleware so user can still logout even the email is unverified
 Route::middleware('auth')->post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+// Profile outisde the verified middleware so user can still access profile page even the email is unverified
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+
 Route::middleware(['auth', 'verified'])->group(function () {
 
     // Record routes
@@ -63,6 +66,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
         });
     });
 
-    // Profile
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    
 });
