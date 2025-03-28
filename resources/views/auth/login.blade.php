@@ -37,6 +37,9 @@
                 </label>
             </div>
 
+            <div class="relative bg-inherit">
+                <a href="">Forgot your password?</a>
+            </div>
             @php
                 $buttonClass =
                     'mt-2 w-full bg-primary hover:bg-white hover:text-primary border-1 hover:border-primary text-white font-medium py-2 rounded-lg transition duration-300';

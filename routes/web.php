@@ -29,8 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/email/resend', [VerificationController::class, 'resend'])->middleware('throttle:6,1')->name('verification.resend');
 });
 
+// Logout outside the verified middleware so user can still logout even the email is unverified
+Route::middleware('auth')->post('/logout', [LoginController::class, 'logout'])->name('logout');
+
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
     // Record routes
     Route::prefix('records')->group(function () {
