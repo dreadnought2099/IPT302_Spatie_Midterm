@@ -39,7 +39,8 @@ class ResetPasswordNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new ResetPasswordMail($this->token, $notifiable->email));
+        return (new ResetPasswordMail($this->token, $notifiable->email, $notifiable))
+        ->to($notifiable->email);
     }
 
     /**
