@@ -17,11 +17,14 @@ class ResetPasswordMail extends Mailable
      * Create a new message instance.
      */
 
-    public $resetUrl;
+     public $token;
+     public $email;
+ 
     
-    public function __construct($resetUrl)
+    public function __construct($token, $email)
     {
-        $this->resetUrl = $resetUrl;
+        $this->token = $token;
+        $this->email = $email;
     }
 
     /**
@@ -56,8 +59,12 @@ class ResetPasswordMail extends Mailable
 
     public function build() {
 
-        return $this->subject('Reset Your Password')
+       return $this->to($this->email)
+                    ->subject('Reset Your Password')
                     ->markdown('emails.reset-password')
-                    ->with(['url' => $this->resetUrl]);
+                    ->with([
+                        'token' => $this->token,
+                        'email' => $this->email,
+                    ]);
     }
 }

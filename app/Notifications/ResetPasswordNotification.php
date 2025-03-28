@@ -39,14 +39,7 @@ class ResetPasswordNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = url('/reset-password/' . $this->token . '?email=' . urlencode($notifiable->email));
-
-        return (new MailMessage)
-            ->subject('Reset Your Password')
-            ->greeting('Hello!')
-            ->line('You requested to reset your password. Click the button below to proceed:')  
-            ->action('Reset Password', $url)
-            ->line('If you did not request this, please ignore this email.');
+        return (new ResetPasswordMail($this->token, $notifiable->email));
     }
 
     /**
